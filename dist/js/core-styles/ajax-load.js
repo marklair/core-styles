@@ -75,12 +75,10 @@ function loadOnView(target, url, infinite) {
       // Element enters the viewport
       if(!entries[0].target.classList.contains('is-loaded')) {
         // Element has not been loaded yet
-        // moved to LAST thing that happens so that i can read the div during infinite scroll as the FINAL change to the dom each time.
-        //entries[0].target.classList.add('is-loaded');
+        entries[0].target.classList.add('is-loaded');
         load(target, url, infinite);
         let skipHistory = entries[0].target.hasAttribute('data-skip-history');
         if(!skipHistory) { history.pushState(null, "", url); }
-        entries[0].target.classList.add('is-loaded');
       }
 
     } else {
